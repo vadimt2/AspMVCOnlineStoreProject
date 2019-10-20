@@ -1,0 +1,47 @@
+﻿@if (HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    // @Html.Partial("_LogedIn")
+   @Html.Action("GetUser","Account", "_LogedIn");
+}
+else
+{
+    if (ViewBag.Sucsess != null)
+    {
+        <div>@ViewBag.Sucsess</div>
+    }
+
+    using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        Html.AntiForgeryToken();
+        <div class="form-horizontal">
+            <h4>Login</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">User name:</label>
+                <div class="col-md-10">
+                    <input type="text" id="UserName" name="UserName" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Password:</label>
+                <div class="col-md-10">
+                    <input type="password" id="Password" name="Password" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-default" />
+                    @Html.ActionLink("Register", "Register", "Account")
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+
+
+

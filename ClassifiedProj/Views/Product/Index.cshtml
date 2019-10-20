@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Models.Models.Product>
+@using ClassifiedProj.Models
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>ShowAll</h2>
+
+@using (Html.BeginForm("Index", "Product", FormMethod.Post, new { id = "SortingForm" }))
+{
+    <b>Order By: </b>
+    <label class="radio">
+        @Html.RadioButton("orderBy", "Name", new { id = "radio" })
+        Name
+        <span class="checkround"></span>
+    </label>
+    <label class="radio">
+        @Html.RadioButton("orderBy", "Date-nw", new { id = "radio" })
+        Date - New Item
+        <span class="checkround"></span>
+    </label>
+    <label class="radio">
+        @Html.RadioButton("orderBy", "Date-od", new { id = "radio" })
+        Date - Old Item
+        <span class="checkround"></span>
+    </label>
+
+}
+
+<div class="container">
+    <div id="products" class="row view-group">
+        @foreach (var item in Model)
+        {
+            <div class="item col-xs-4 col-lg-4">
+                @Html.Partial("_Ad", item)
+            </div>
+        }
+    </div>
+</div>
+
+
+<p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Add Product", "AddProduct", "Product")
+    }
+</p>
+
+
+<script>
+    $(document).ready(function () {
+        $('#SortingForm #radio').change(function () {
+            $('#SortingForm').submit();
+        });
+    });
+</script>

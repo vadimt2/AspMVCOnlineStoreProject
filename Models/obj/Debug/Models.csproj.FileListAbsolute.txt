@@ -1,0 +1,11 @@
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\bin\Debug\Models.dll.config
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\bin\Debug\Models.dll
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\bin\Debug\Models.pdb
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\bin\Debug\EntityFramework.dll
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\bin\Debug\EntityFramework.xml
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\obj\Debug\Models.csprojAssemblyReference.cache
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\obj\Debug\Models.csproj.CopyComplete
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\obj\Debug\Models.dll
+D:\Developer\MyShowCase\ASPMVC\AspMVCClassifiedsProject\Models\obj\Debug\Models.pdb

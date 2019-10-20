@@ -1,0 +1,25 @@
+﻿@model Models.Models.User
+
+<div class="form-horizontal">
+    <h4>Hello @HttpContext.Current.User.Identity.Name</h4>
+    <hr />
+    @if (Model.Role == Models.Models.Role.Admin)
+    {
+        <div>@Html.ActionLink("Edit all users", "EditAllUsers", "Account")</div>
+        <div>@Html.ActionLink("Edit all ads", "AllLisOfAdstInTheWeb", "Product")</div>
+    }
+    <div>@Html.ActionLink("Edit User", "Edit", "Account", new { UserName = User.Identity.Name }, null)</div>
+    <div>@Html.ActionLink("My Ads", "MyList", "Product")</div>
+    <div>@Html.ActionLink("Add Ad", "AddProduct", "Product")</div>
+    <div>@Html.ActionLink("Sign out", "SignOut", "Account")</div>
+    <div class="form-group">
+        <div class="col-md-10">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+        </div>
+    </div>
+</div>

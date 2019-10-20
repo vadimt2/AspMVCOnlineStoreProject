@@ -1,0 +1,27 @@
+﻿@model Models.Models.Product
+@using ClassifiedProj.Models
+
+    <div class="thumbnail card">
+        <div class="img-event">
+            @ImgHalper.DisplayImage(Model.Picture1, "group list-group-image img-fluid")
+        </div>
+        <div class="caption card-body">
+            <h4 class="group card-title inner list-group-item-heading">
+                @Model.Title
+            </h4>
+            <p class="group inner list-group-item-text">
+                @Model.ShortDescription
+            </p>
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <p class="lead">
+                        @Model.Date
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    @Html.ActionLink("Add to cart", "AddItem", "Cart", new { id = @Model.Id }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Details", "Details", "Product", new { id = Model.Id },null)
+                </div>
+            </div>
+        </div>
+    </div>

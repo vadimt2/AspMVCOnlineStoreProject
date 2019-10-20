@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Models.Models.Product>
+@using Models.Models
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>Cart</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @{decimal subToal = 0; }
+    @{List<Product> list = (List<Product>)Session["cart"];}
+    @if (list != null)
+    {
+        foreach (var item in (List<Product>)Session["cart"])
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Remove", "RemoveItem", new { id = item.Id })
+                </td>
+                @{subToal += item.Price; }
+            </tr>
+        }
+    }
+    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        decimal discount = (subToal * (decimal)0.10);
+        subToal = subToal - discount;
+        <h3>You have a discount of 10% sence you are a member</h3>
+        <p>Sub Total: @subToal</p>
+    }
+    else
+    {
+        <h3>Signup and get 10% off</h3>
+        <p>Sub Total: @subToal</p>
+    }
+</table>
+
+@using (Html.BeginForm("SoldItem", "Cart"))
+{
+    if (@list != null)
+    {
+        <div><input type="submit" value="Submit" class="btn btn-default" /></div>
+    }
+}

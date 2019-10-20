@@ -1,0 +1,100 @@
+﻿@model Models.Models.Product
+@using ClassifiedProj.Models
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LongDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+            <div>
+                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    decimal discount = (Model.Price * (decimal)0.10);
+                    decimal price = Model.Price - discount;
+                <p>As member you have 10%OFF, Your Price is: @price</p>
+                }
+            </div>
+        </dd>
+
+        @if (Model.Picture1 != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Picture1)
+            </dt>
+
+            <dd>
+                @ImgHalper.DisplayImage(Model.Picture1, "500", "300")
+            </dd>
+        }
+
+        @if (Model.Picture2 != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Picture2)
+            </dt>
+
+            <dd>
+                @ImgHalper.DisplayImage(Model.Picture2, "500", "300")
+            </dd>
+        }
+
+        @if (Model.Picture3 != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Picture3)
+            </dt>
+
+            <dd>
+                 @ImgHalper.DisplayImage(Model.Picture3, "500", "300")
+            </dd>
+        }
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
